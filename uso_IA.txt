@@ -461,3 +461,236 @@ Características:
 Es una base ideal para empezar con un portafolio sencillo y limpio, y luego si quieres puedes ir añadiento detalles.
 
 Si quieres, ahora te ayudo con una última mejora: dejar el Home más parecida a una portada elegante, sin que se vea “muy floja”.
+
+pregunta:
+guiame para desarrollar estafase mas no modifiques nada y de modificar algo trata de que sea sencillo
+
+## Fase 6. Componente reutilizable con props: TarjetaProyecto
+
+1. Crea `components/TarjetaProyecto.jsx`. El componente **recibe por props** `titulo`, `descripcion` y `enlace` (puedes desestructurarlas en los parámetros de la función).
+2. Dentro muestra el título, la descripción y un enlace "Ver proyecto". Como es un enlace **externo** a GitHub, aquí sí corresponde `<a href>`; agrégale `target="_blank"` y `rel="noopener noreferrer"`.
+3. En `Proyectos.jsx` define un arreglo con dos o tres proyectos y recórrelo con `.map()`, pasando los datos como props a cada `TarjetaProyecto`.
+4. Usa enlaces reales a tus repositorios. Si un proyecto no tiene repositorio, indícalo en lugar de poner un enlace falso.
+
+respuesta IA:
+Claro. Te lo guío sin tocar nada del proyecto, con una estructura simple y clara para esta fase.
+
+Lo que debes hacer:
+
+1. Crear un componente reutilizable en:
+   src/components/TarjetaProyecto.jsx
+
+2. En ese componente recibir props:
+   - titulo
+   - descripcion
+   - enlace
+
+3. En Proyectos.jsx crear un arreglo con tus proyectos y recorrerlo con .map()
+
+4. Cada proyecto debe pasarle sus datos al componente con props
+
+5. Si no tienes un repositorio real, no pongas un enlace falso. En ese caso muestra texto como:
+   - "Repositorio no disponible"
+
+Ejemplo exacto para TarjetaProyecto.jsx
+
+```jsx
+export default function TarjetaProyecto({ titulo, descripcion, enlace }) {
+  return (
+    <article>
+      <h3>{titulo}</h3>
+      <p>{descripcion}</p>
+
+      {enlace ? (
+        <a href={enlace} target="_blank" rel="noopener noreferrer">
+          Ver proyecto
+        </a>
+      ) : (
+        <span>Repositorio no disponible</span>
+      )}
+    </article>
+  )
+}
+```
+
+Importante:
+- `Ver proyecto` va como enlace externo con `<a href>`, porque es un link a GitHub
+- `target="_blank"` y `rel="noopener noreferrer"` son obligatorios para seguridad
+
+Ahora, en Proyectos.jsx, la estructura sería así:
+
+```jsx
+import TarjetaProyecto from '../components/TarjetaProyecto'
+
+const proyectos = [
+  {
+    titulo: 'Mi portafolio',
+    descripcion: 'Sitio personal para mostrar mi trabajo y experiencia.',
+    enlace: 'https://github.com/tuusuario/mi-portafolio',
+  },
+  {
+    titulo: 'Dashboard simple',
+    descripcion: 'Proyecto de gestión visual con datos y métricas.',
+    enlace: 'https://github.com/tuusuario/dashboard-simple',
+  },
+  {
+    titulo: 'Landing page',
+    descripcion: 'Página promocional para un producto o servicio.',
+    enlace: null,
+  },
+]
+
+export default function Proyectos() {
+  return (
+    <section>
+      <h1>Proyectos</h1>
+
+      {proyectos.map((proyecto) => (
+        <TarjetaProyecto
+          key={proyecto.titulo}
+          titulo={proyecto.titulo}
+          descripcion={proyecto.descripcion}
+          enlace={proyecto.enlace}
+        />
+      ))}
+    </section>
+  )
+}
+```
+
+Qué debes tener en cuenta:
+- Debes usar `key={proyecto.titulo}` para cada elemento del `.map()`
+- Si un proyecto no tiene repositorio, pon `enlace: null` o `enlace: ''`
+- El componente maneja eso con la validación:
+  - si hay enlace → mostrar el enlace
+  - si no → mostrar "Repositorio no disponible"
+
+Si quieres, te puedo dejar ahora mismo una versión todavía más simple y más adaptada a tu portafolio, pero sin tocar el proyecto, solo con el código listo para que tú lo pegues.
+
+pregunta:
+
+que pongo dentro de los espacios?
+
+respuesta IA:
+Read , lines 1 to 200
+Completed with input: {
+  "path": "c:\\Users\\Sfriz\\OneDrive\\Documentos\\trabajo frontend\\mini-portafolio\\src\\pages\\Proyectos.jsx",
+  "view_range": [
+    1,
+    200
+  ]
+}
+
+Dentro de esos espacios debes poner tus datos reales, no texto inventado.
+
+Lo que va en cada proyecto es:
+
+- titulo: nombre del proyecto
+- descripcion: qué hace y para qué sirve
+- enlace: la URL de GitHub real
+- si no tienes repo real: poner null
+
+Ejemplo sencillo:
+
+```jsx
+const proyectos = [
+  {
+    titulo: 'Portafolio personal',
+    descripcion: 'Sitio web para mostrar mi perfil, proyectos y habilidades.',
+    enlace: 'https://github.com/tuusuario/portafolio-personal',
+  },
+  {
+    titulo: 'Landing page de estudio',
+    descripcion: 'Página simple para presentar un servicio o marca con diseño limpio.',
+    enlace: null,
+  },
+  {
+    titulo: 'App de tareas',
+    descripcion: 'Proyecto para organizar actividades con una interfaz sencilla.',
+    enlace: 'https://github.com/tuusuario/app-de-tareas',
+  },
+]
+```
+
+Si quieres usar exactamente lo que tienes ahora, solo cambia esto:
+
+- `Mi portafolio` → nombre real de tu proyecto
+- `Sitio personal para mostrar mi trabajo y experiencia.` → descripción real
+- `https://github.com/tuusuario/mi-portafolio` → tu URL real de GitHub
+
+Y si un proyecto no tiene repositorio:
+```jsx
+enlace: null
+```
+
+Eso hará que en la tarjeta aparezca:
+"Repositorio no disponible"
+
+Si quieres, te puedo ayudar a llenar estos 2 o 3 proyectos con ejemplos que suenen más a tu perfil de estudiante frontend.
+
+pregunta:
+
+me puedes coregir los errores?
+
+respuesta IA:
+
+Read , lines 1 to 220
+Completed with input: {
+  "path": "c:\\Users\\Sfriz\\OneDrive\\Documentos\\trabajo frontend\\mini-portafolio\\src\\pages\\Proyectos.jsx",
+  "view_range": [
+    1,
+    220
+  ]
+}
+
+Read , lines 1 to 220
+Completed with input: {
+  "path": "c:\\Users\\Sfriz\\OneDrive\\Documentos\\trabajo frontend\\mini-portafolio\\src\\components\\TarjetaProyecto.jsx",
+  "view_range": [
+    1,
+    220
+  ]
+}
+
+Read , lines 1 to 220
+Completed with input: {
+  "path": "c:\\Users\\Sfriz\\OneDrive\\Documentos\\trabajo frontend\\mini-portafolio\\src\\App.jsx",
+  "view_range": [
+    1,
+    220
+  ]
+}
+
+Edit 
+
+Sí. El error principal estaba en `src/components/TarjetaProyecto.jsx`.
+
+Estaba mal escrito esto:
+- `{mini-repositorio}` en lugar de `{titulo}`
+- el `else` mostraba una URL como si fuera texto del proyecto
+- no se estaba renderizando el título correctamente
+
+Lo dejé corregido así:
+
+```jsx
+export default function TarjetaProyecto({ titulo, descripcion, enlace }) {
+  return (
+    <article>
+      <h3>{titulo}</h3>
+      <p>{descripcion}</p>
+
+      {enlace ? (
+        <a href={enlace} target="_blank" rel="noopener noreferrer">
+          Ver proyecto
+        </a>
+      ) : (
+        <span>Repositorio no disponible</span>
+      )}
+    </article>
+  )
+}
+```
+
+También revisé `src/pages/Proyectos.jsx` y la estructura del `.map()` está bien.
+
+Si quieres, ahora te sigo con una revisión general de los errores restantes del proyecto para que quede todo más limpio antes de la siguiente fase.
