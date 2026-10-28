@@ -259,3 +259,68 @@ footer {
   font-size: 0.9rem;
   font-weight: 600;
 }
+
+
+/* Contenedor del Formulario */
+.formulario-container {
+  max-width: 600px;
+  margin: 1.5rem 0;
+}
+
+.formulario-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.campo-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.campo-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.campo-group input,
+.campo-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background-color: var(--card);
+  color: var(--bg);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.campo-group input:focus,
+.campo-group textarea:focus {
+  outline: 2px solid var(--text);
+}
+
+/* Texto de error */
+.error-text {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Mensaje de éxito */
+.mensaje-exito {
+  background-color: #2e5a44;
+  color: #a3e635;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.btn-submit {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
