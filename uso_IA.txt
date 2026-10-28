@@ -1,0 +1,94 @@
+mi consulta:
+
+me explicas como desarrollar el paso 3?
+
+Fase 4. Esqueleto de navegación (rutas + layout)
+Primero se arma la estructura vacía y después se llena. Así detectas errores de rutas desde temprano.
+1. Activar el router en main.jsx. Importa BrowserRouter y envuelve <App /> con él.
+2. Crear las cinco páginas en src/pages/: Inicio.jsx, SobreMi.jsx, Habilidades.jsx, Proyectos.jsx, Contacto.jsx. Por ahora cada una devuelve solo un <h1> con su nombre.
+3. Crear Header.jsx en components:
+  - Una lista con los cinco enlaces en este orden: Inicio · Sobre mí · Habilidades · Proyectos · Contacto.
+  - Usa NavLink (no <a>) con to="/", to="/sobre-mi", etc.
+  - Al NavLink de Inicio agrégale la propiedad end; si no, quedará marcado como activo en todas las páginas.
+4. Crear Footer.jsx con tu nombre y el año. Para el año usa new Date().getFullYear() en vez de escribirlo a mano.
+5. Crear Layout.jsx: renderiza Header, luego <Outlet /> (donde aparecerá cada página) y luego Footer.
+6. Definir las rutas en App.jsx: un Routes con una Route padre cuyo element sea el Layout, y dentro cinco Route hijas (la de Inicio con index).
+
+respuesta IA:
+
+Para desarrollar el **Paso 3**, vas a crear un componente llamado `Header.jsx` dentro de la carpeta `src/components/`. Su función es ofrecer un menú de navegación que cambie de página sin recargar la web.
+
+Aquí tienes la explicación detallada y el código paso a paso:
+
+### 1. Ubicación del archivo
+
+Crea el archivo en la siguiente ruta:
+`src/components/Header.jsx`
+
+---
+
+### 2. Puntos clave a tener en cuenta
+
+* **Importar `NavLink`:** En React Router se utiliza `NavLink` (en lugar de etiquetas HTML `<a>`) para que la navegación sea SPA (Single Page Application) sin recargar la página. Además, `NavLink` detecta automáticamente qué ruta está activa para aplicar estilos CSS.
+* **Propiedad `end` en el enlace de Inicio (`/`):** Por defecto, React Router verifica si la URL actual *comienza* con la ruta del `NavLink`. Como todas las rutas empiezan con `/` (por ejemplo, `/sobre-mi`), la ruta raíz `/` siempre se consideraría "activa". La propiedad `end` le indica a React Router que solo marque el enlace de **Inicio** como activo si la URL es **exactamente** `/`.
+
+---
+
+### 3. Código completo de `Header.jsx`
+
+```jsx
+import { NavLink } from 'react-router-dom';
+
+export default function Header() {
+  return (
+    <header>
+      <nav>
+        <ul>
+          <li>
+            {/* Se agrega 'end' para que solo se active en la ruta exacta "/" */}
+            <NavLink to="/" end>
+              Inicio
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/sobre-mi">
+              Sobre mí
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/habilidades">
+              Habilidades
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/proyectos">
+              Proyectos
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/contacto">
+              Contacto
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+}
+
+```
+
+---
+
+### ¿Cómo funciona por dentro?
+
+Cuando este componente se renderice en pantalla, `NavLink` le añadirá automáticamente la clase CSS `.active` al enlace de la página en la que te encuentres. Si deseas agregarle estilos CSS más adelante, podrás destacar el enlace activo simplemente apuntando a esa clase en tu archivo de estilos:
+
+```css
+/* Ejemplo de CSS */
+nav a.active {
+  font-weight: bold;
+  color: #0070f3;
+}
+
+```
