@@ -24,26 +24,35 @@ El portafolio tiene las siguientes secciones:
 
 **Estructura de carpetas**
 
-:\USERS\SFRIZ\ONEDRIVE\DOCUMENTOS\TRABAJO FRONTEND\MINI-PORTAFOLIO\SRC
-|   App.jsx
-|   index.css
-|   main.jsx
-|   
-+---assets
-|       hero.png
-|       vite.svg
-|       
-+---components
-|       FormularioContacto.jsx
-|       Header.jsx
-|       TarjetaProyecto.jsx
-|       
-\---pages
-        Contacto.jsx
-        Habilidades.jsx
-        Inicio.jsx
-        Proyectos.jsx
-        SobreMi.jsx
+```text
+mini-portafolio/
+├─ public/
+│  ├─ favicon.svg
+│  └─ icons.svg
+├─ src/
+│  ├─ assets/
+│  │  ├─ hero.png
+│  │  └─ vite.svg
+│  ├─ components/
+│  │  ├─ FormularioContacto.jsx
+│  │  ├─ Header.jsx
+│  │  └─ TarjetaProyecto.jsx
+│  ├─ pages/
+│  │  ├─ Contacto.jsx
+│  │  ├─ Habilidades.jsx
+│  │  ├─ Inicio.jsx
+│  │  ├─ Proyectos.jsx
+│  │  └─ SobreMi.jsx
+│  ├─ App.jsx
+│  ├─ index.css
+│  └─ main.jsx
+├─ .gitignore
+├─ index.html
+├─ package.json
+├─ README.md
+├─ vite.config.js
+└─ uso_IA.txt
+```
 
 **Rutas y muestra cada una**
       <main>
