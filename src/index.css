@@ -1,10 +1,10 @@
 :root {
-  --bg: #390925;      /* Fondo principal morado oscuro */
-  --card: #eee5dc;    /* Fondo de tarjetas crema claro */
-  --text: #7bd6c6;    /* Color principal de textos y acentos turquesa */
-  --muted: #ffffff;   /* Color secundario / textos en blanco */
-  --line: #784848;    /* Bordes y líneas divisoras */
-  --accent: #ead5c5;  /* Color destacador/activo crema rosa */
+  --bg: #3e521aa0;      
+  --card: #eee5dc;    
+  --text: #fbfee5;    
+  --muted: #d6f6d6;   
+  --line: #784848;    
+  --accent: #ead5c5;  
 }
 
 /* Selector universal corregido (*) */
@@ -128,11 +128,10 @@ button,
   text-decoration: none;
 }
 
-footer {
+footer{
+  background-color: #686654;
   text-align: center;
-  padding: 1.5rem 0;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
+  
 }
 
 /* Layout en 2 columnas para el encabezado de Sobre mí */
@@ -274,6 +273,9 @@ footer {
 }
 
 .campo-group {
+  border: none;       
+  padding: 0;        
+  margin: 0;          
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
