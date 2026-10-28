@@ -1,12 +1,13 @@
 :root {
-  --bg: #390925;
-  --card: #eee5dc;
-  --text: #7bd6c6;
-  --muted: #ffff;
-  --line: #784848;
-  --accent: #ead5c5;
+  --bg: #390925;      /* Fondo principal morado oscuro */
+  --card: #eee5dc;    /* Fondo de tarjetas crema claro */
+  --text: #7bd6c6;    /* Color principal de textos y acentos turquesa */
+  --muted: #ffffff;   /* Color secundario / textos en blanco */
+  --line: #784848;    /* Bordes y líneas divisoras */
+  --accent: #ead5c5;  /* Color destacador/activo crema rosa */
 }
 
+/* Selector universal corregido (*) */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,17 +16,20 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text);
   line-height: 1.6;
 }
 
 #root {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Header con borde y fondo oscuro acorde a la paleta */
 header {
-  background: #fff;
+  background: rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid var(--line);
 }
 
@@ -39,20 +43,29 @@ nav ul {
 }
 
 nav a {
-  color: var(--text);
+  color: var(--muted);
   text-decoration: none;
   font-size: 0.95rem;
+  transition: color 0.2s ease;
 }
 
+nav a:hover {
+  color: var(--text);
+}
+
+/* Enlace activo resaltado con la variable accent */
 nav a.active {
   color: var(--accent);
   font-weight: 700;
+  border-bottom: 2px solid var(--accent);
 }
 
 main {
   max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem 1rem 3rem;
+  flex: 1;
 }
 
 section {
@@ -64,6 +77,7 @@ section {
 h1, h2, h3 {
   line-height: 1.2;
   margin-bottom: 0.5rem;
+  color: var(--text);
 }
 
 h1 {
@@ -74,17 +88,21 @@ h2 {
   font-size: clamp(1.3rem, 2.5vw, 2rem);
 }
 
-p,
-li {
+p, li {
   color: var(--muted);
 }
 
+/* Estructura para Tarjetas / Articles */
 article {
-  background: var(--card);
+  background-color: var(--card);
   border: 1px solid var(--line);
-  padding: 1rem;
+  padding: 1.25rem;
   border-radius: 10px;
-  background-color: #784848;
+}
+
+/* Texto dentro de las tarjetas crema para mantener legibilidad */
+article h1, article h2, article h3, article p, article li {
+  color: var(--bg);
 }
 
 ul {
@@ -96,12 +114,148 @@ a {
   text-decoration: none;
 }
 
+/* Botones con color de acento y texto en tono oscuro para legibilidad */
 button,
 .link-button {
   display: inline-block;
   background: var(--accent);
-  color: #fff;
+  color: var(--bg);
   padding: 0.75rem 1.2rem;
+  border: none;
   border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+/* Layout en 2 columnas para el encabezado de Sobre mí */
+.sobre-mi-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Recuadro / Avatar gris claro */
+.avatar-placeholder {
+  width: 140px;
+  height: 140px;
+  background-color: var(--card);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--line);
+  flex-shrink: 0;
+}
+
+.sobre-mi-intro h1 {
+  margin-bottom: 0.75rem;
+}
+
+.sobre-mi-seccion {
+  margin-top: 1.5rem;
+}
+
+.sobre-mi-seccion h2 {
+  margin-bottom: 0.5rem;
+}
+
+/* En dispositivos móviles se acomoda verticalmente */
+@media (max-width: 600px) {
+  .sobre-mi-header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Sección general de habilidades */
+.habilidades-seccion {
+  margin-top: 1.5rem;
+}
+
+.habilidades-seccion h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Grilla de 3 columnas para las tarjetas de tecnologías */
+.tecnologias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Estilo de la tarjeta */
+.habilidad-card {
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.habilidad-card h3 {
+  font-size: 1rem;
+  color: var(--bg);
+  margin-bottom: 0.75rem;
+}
+
+/* Ícono o logo central */
+.habilidad-icon {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--bg);
+  margin-bottom: 0.5rem;
+}
+
+/* Barra de progreso visual */
+.barra-nivel-container {
+  width: 100%;
+  height: 6px;
+  background-color: #d1c7bd;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.3rem;
+}
+
+.barra-nivel-fill {
+  height: 100%;
+  background-color: var(--bg);
+  border-radius: 3px;
+}
+
+.porcentaje-texto {
+  font-size: 0.75rem;
+  color: var(--bg);
+  align-self: flex-end;
+  font-weight: 600;
+}
+
+/* Lista horizontal de Herramientas (Badges) */
+.herramientas-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.herramienta-badge {
+  background-color: var(--card);
+  color: var(--bg);
+  border: 1px solid var(--line);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
   font-weight: 600;
 }

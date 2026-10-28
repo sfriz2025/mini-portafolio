@@ -1,36 +1,48 @@
 export default function Habilidades() {
-  const habilidades = [
-    { nombre: 'HTML', nivel: 'Basico-Intermedio' },
-    { nombre: 'CSS', nivel: 'Basico-Intermedio' },
-    { nombre: 'JavaScript', nivel: 'Basico' },
-    { nombre: 'React', nivel: 'Basico' },
-    { nombre: 'Responsive Design', nivel: 'Basico'},
-    { nombre: 'UX/UI', nivel: 'Básico' },
-  ]
+  const tecnologias = [
+    { nombre: 'HTML', porcentaje: '90%', icono: '5' },
+    { nombre: 'CSS', porcentaje: '88%', icono: '3' },
+    { nombre: 'JavaScript', porcentaje: '75%', icono: 'JS' },
+    { nombre: 'React', porcentaje: '70%', icono: '⚛' },
+    { nombre: 'TypeScript', porcentaje: '60%', icono: 'TS' },
+    { nombre: 'Python', porcentaje: '70%', icono: '🐍' },
+  ];
 
-  const herramientas = ['Git', 'GitHub', 'VS Code', 'Figma', 'Vite', 'NPM']
+  const herramientas = ['Git', 'GitHub', 'VS Code', 'Figma', 'Node.js', 'Vite', 'NPM'];
 
   return (
-    <section>
-      <h1>Habilidades</h1>
+    <section className="habilidades-container">
+      <h1>Habilidades y Lenguajes</h1>
 
-      <div>
-        {habilidades.map((habilidad) => (
-          <article key={habilidad.nombre}>
-            <h3>{habilidad.nombre}</h3>
-            <p>{habilidad.nivel}</p>
-          </article>
-        ))}
+      <div className="habilidades-seccion">
+        <h2>Tecnologías</h2>
+        <div className="tecnologias-grid">
+          {tecnologias.map((tec) => (
+            <article key={tec.nombre} className="habilidad-card">
+              <div className="habilidad-icon">{tec.icono}</div>
+              <h3>{tec.nombre}</h3>
+              <div className="barra-nivel-container">
+                <div
+                  className="barra-nivel-fill"
+                  style={{ width: tec.porcentaje }}
+                ></div>
+              </div>
+              <span className="porcentaje-texto">{tec.porcentaje}</span>
+            </article>
+          ))}
+        </div>
       </div>
 
-      <div>
+      <div className="habilidades-seccion">
         <h2>Herramientas</h2>
-        <ul>
+        <div className="herramientas-list">
           {herramientas.map((herramienta) => (
-            <li key={herramienta}>{herramienta}</li>
+            <span key={herramienta} className="herramienta-badge">
+              {herramienta}
+            </span>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
-  )
+  );
 }

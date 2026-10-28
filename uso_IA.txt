@@ -1,3 +1,7 @@
+
+
+
+
 mi consulta:
 
 me explicas como desarrollar el paso 3?
@@ -694,3 +698,498 @@ export default function TarjetaProyecto({ titulo, descripcion, enlace }) {
 También revisé `src/pages/Proyectos.jsx` y la estructura del `.map()` está bien.
 
 Si quieres, ahora te sigo con una revisión general de los errores restantes del proyecto para que quede todo más limpio antes de la siguiente fase.
+
+pregunta:
+
+ayudame a que mi css quede con colores similares
+
+respuesta IA:
+
+:root {
+  --bg: #390925;      /* Fondo principal morado oscuro */
+  --card: #eee5dc;    /* Fondo de tarjetas crema claro */
+  --text: #7bd6c6;    /* Color principal de textos y acentos turquesa */
+  --muted: #ffffff;   /* Color secundario / textos en blanco */
+  --line: #784848;    /* Bordes y líneas divisoras */
+  --accent: #ead5c5;  /* Color destacador/activo crema rosa */
+}
+
+/* Selector universal corregido (*) */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header con borde y fondo oscuro acorde a la paleta */
+header {
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--line);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--text);
+}
+
+/* Enlace activo resaltado con la variable accent */
+nav a.active {
+  color: var(--accent);
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent);
+}
+
+main {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+  flex: 1;
+}
+
+section {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.3rem);
+}
+
+h2 {
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+}
+
+p, li {
+  color: var(--muted);
+}
+
+/* Estructura para Tarjetas / Articles */
+article {
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  padding: 1.25rem;
+  border-radius: 10px;
+}
+
+/* Texto dentro de las tarjetas crema para mantener legibilidad */
+article h1, article h2, article h3, article p, article li {
+  color: var(--bg);
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* Botones con color de acento y texto en tono oscuro para legibilidad */
+button,
+.link-button {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.75rem 1.2rem;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+pregunta:
+
+este es el codigo de mi archiov Sobre mi  necesito que la estructura sea la misma que la de la imagen
+
+export default function SobreMi() {
+  const intereses = [
+    'Desarrollo Web y tecnologias Frontend',
+    'Aprender nuevas herramientas y frameworks',
+    'Construir proyectos que generen un impacto real',
+  ]
+
+  return (
+    <section>
+      <h1>Sobre mí</h1>
+        <article>
+            <p>
+                Soy Scarleth, estudiante de Ingenieria Civil Informatica. Me apasiona el desarrollo web y 
+                me interesa crear soluciones tecgnologicas que mejoren la experiencia de las personas 
+            </p>
+        </article>
+
+        <article>
+            <h2>¿Que estudio?</h2>
+            <p>
+                Estudio Ingenieria Civil Informatica en el Instituto tecnologico de la Universidad Catolica
+                de Temuco
+            </p>
+        </article>
+        <h2>Intereses</h2>
+        <ul>
+            {intereses.map((interes) => (
+            <li key={interes}>{interes}</li>
+            ))}
+        </ul>
+        </section>
+  )
+}
+
+respuesta IA:
+
+Para que la estructura y el diseño de la vista **Sobre mí** queden idénticos al alambre de diseño (wireframe) de la imagen (sección 2), debes organizar el contenido en dos columnas en la parte superior (una para la foto/avatar y otra para el texto principal) y ajustar los encabezados y la lista de intereses.
+
+Aquí tienes el código de `SobreMi.jsx` adaptado a la estructura de la imagen:
+
+```jsx
+export default function SobreMi() {
+  const intereses = [
+    'Desarrollo web y tecnologías frontend',
+    'Aprender nuevas herramientas y frameworks',
+    'Construir proyectos que generen un impacto real',
+  ];
+
+  return (
+    <section className="sobre-mi-container">
+      {/* Sección principal: Foto + Presentación en 2 columnas */}
+      <div className="sobre-mi-header">
+        <div className="avatar-placeholder">
+          {/* SVG o placeholder visual de usuario similar a la imagen */}
+          <svg
+            width="100"
+            height="100"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+          </svg>
+        </div>
+
+        <div className="sobre-mi-intro">
+          <h1>Sobre mí</h1>
+          <p>
+            Soy Scarleth, estudiante de Ingeniería Civil Informática. Me apasiona
+            el desarrollo web y me interesa crear soluciones tecnológicas que
+            mejoren la experiencia de las personas.
+          </p>
+        </div>
+      </div>
+
+      {/* Bloque ¿Qué estudio? */}
+      <div className="sobre-mi-seccion">
+        <h2>¿Qué estudio?</h2>
+        <p>
+          Estudio Ingeniería Civil Informática en la Universidad Católica de Temuco.
+        </p>
+      </div>
+
+      {/* Bloque ¿Qué me interesa? */}
+      <div className="sobre-mi-seccion">
+        <h2>¿Qué me interesa?</h2>
+        <ul>
+          {intereses.map((interes) => (
+            <li key={interes}>{interes}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+```
+
+---
+
+### Agrega estas reglas a tu archivo CSS para la disposición de columnas:
+
+Para lograr que la imagen y la presentación queden lado a lado como en el diseño, añade este bloque al final de tu CSS:
+
+```css
+/* Layout en 2 columnas para el encabezado de Sobre mí */
+.sobre-mi-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Recuadro / Avatar gris claro */
+.avatar-placeholder {
+  width: 140px;
+  height: 140px;
+  background-color: var(--card);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--line);
+  flex-shrink: 0;
+}
+
+.sobre-mi-intro h1 {
+  margin-bottom: 0.75rem;
+}
+
+.sobre-mi-seccion {
+  margin-top: 1.5rem;
+}
+
+.sobre-mi-seccion h2 {
+  margin-bottom: 0.5rem;
+}
+
+/* En dispositivos móviles se acomoda verticalmente */
+@media (max-width: 600px) {
+  .sobre-mi-header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+```
+
+pregunta.
+
+export default function Habilidades() {
+  const habilidades = [
+    { nombre: 'HTML', nivel: 'Basico-Intermedio' },
+    { nombre: 'CSS', nivel: 'Basico-Intermedio' },
+    { nombre: 'JavaScript', nivel: 'Basico' },
+    { nombre: 'React', nivel: 'Basico' },
+    { nombre: 'Responsive Design', nivel: 'Basico'},
+    { nombre: 'UX/UI', nivel: 'Básico' },
+  ]
+
+  const herramientas = ['Git', 'GitHub', 'VS Code', 'Figma', 'Vite', 'NPM']
+
+  return (
+    <section>
+      <h1>Habilidades</h1>
+
+      <div>
+        {habilidades.map((habilidad) => (
+          <article key={habilidad.nombre}>
+            <h3>{habilidad.nombre}</h3>
+            <p>{habilidad.nivel}</p>
+          </article>
+        ))}
+      </div>
+
+      <div>
+        <h2>Herramientas</h2>
+        <ul>
+          {herramientas.map((herramienta) => (
+            <li key={herramienta}>{herramienta}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+respuesta IA:
+Para que la vista **Habilidades** mantenga la misma estructura visual que se muestra en el diseño (sección 3):
+
+* Un título principal **Habilidades y Lenguajes**.
+
+
+* Un subtítulo **Tecnologías** seguido de una cuadrícula (grid) de tarjetas con ícono/logo, nombre y una barra/porcentaje de nivel.
+
+
+* Un subtítulo **Herramientas** con las etiquetas (pills/badges) alineadas horizontalmente.
+
+
+
+Aquí tienes el código adaptado de `Habilidades.jsx` y su correspondiente bloque CSS:
+
+### Código de `Habilidades.jsx`
+
+```jsx
+export default function Habilidades() {
+  const tecnologias = [
+    { nombre: 'HTML', porcentaje: '90%', icono: '5' },
+    { nombre: 'CSS', porcentaje: '88%', icono: '3' },
+    { nombre: 'JavaScript', porcentaje: '75%', icono: 'JS' },
+    { nombre: 'React', porcentaje: '70%', icono: '⚛' },
+    { nombre: 'TypeScript', porcentaje: '60%', icono: 'TS' },
+    { nombre: 'Python', porcentaje: '70%', icono: '🐍' },
+  ];
+
+  const herramientas = ['Git', 'GitHub', 'VS Code', 'Figma', 'Node.js', 'Vite', 'NPM'];
+
+  return (
+    <section className="habilidades-container">
+      <h1>Habilidades y Lenguajes</h1>
+
+      <div className="habilidades-seccion">
+        <h2>Tecnologías</h2>
+        <div className="tecnologias-grid">
+          {tecnologias.map((tec) => (
+            <article key={tec.nombre} className="habilidad-card">
+              <div className="habilidad-icon">{tec.icono}</div>
+              <h3>{tec.nombre}</h3>
+              <div className="barra-nivel-container">
+                <div
+                  className="barra-nivel-fill"
+                  style={{ width: tec.porcentaje }}
+                ></div>
+              </div>
+              <span className="porcentaje-texto">{tec.porcentaje}</span>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="habilidades-seccion">
+        <h2>Herramientas</h2>
+        <div className="herramientas-list">
+          {herramientas.map((herramienta) => (
+            <span key={herramienta} className="herramienta-badge">
+              {herramienta}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+```
+
+---
+
+### Código CSS para `Habilidades.css`
+
+Agrega estas reglas al final de tu archivo CSS para maquetar la grilla, las tarjetas y las etiquetas de herramientas:
+
+```css
+/* Sección general de habilidades */
+.habilidades-seccion {
+  margin-top: 1.5rem;
+}
+
+.habilidades-seccion h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Grilla de 3 columnas para las tarjetas de tecnologías */
+.tecnologias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Estilo de la tarjeta */
+.habilidad-card {
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.habilidad-card h3 {
+  font-size: 1rem;
+  color: var(--bg);
+  margin-bottom: 0.75rem;
+}
+
+/* Ícono o logo central */
+.habilidad-icon {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--bg);
+  margin-bottom: 0.5rem;
+}
+
+/* Barra de progreso visual */
+.barra-nivel-container {
+  width: 100%;
+  height: 6px;
+  background-color: #d1c7bd;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.3rem;
+}
+
+.barra-nivel-fill {
+  height: 100%;
+  background-color: var(--bg);
+  border-radius: 3px;
+}
+
+.porcentaje-texto {
+  font-size: 0.75rem;
+  color: var(--bg);
+  align-self: flex-end;
+  font-weight: 600;
+}
+
+/* Lista horizontal de Herramientas (Badges) */
+.herramientas-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.herramienta-badge {
+  background-color: var(--card);
+  color: var(--bg);
+  border: 1px solid var(--line);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+```
